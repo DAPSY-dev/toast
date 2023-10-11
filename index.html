@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        font-family: sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .button {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        font: inherit;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+        border: 0.0625rem solid #000;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+    </style>
+    <link rel="stylesheet" href="./toast.css">
+  </head>
+  <body>
+    <button type="button" class="button js-toast-default">Default</button>
+    <button type="button" class="button js-toast-error">Error</button>
+    <button type="button" class="button js-toast-warning">Warning</button>
+    <button type="button" class="button js-toast-success">Success</button>
+
+    <script src="./toast.js" defer></script>
+    <script>
+      'use strict'
+
+      window.addEventListener('DOMContentLoaded', () => {
+        window.toast = new Toast('toastId');
+
+        toast.addToast({
+          title: 'Title',
+          text: 'Toast text content.',
+        });
+
+        const defaultButton = document.querySelector('.js-toast-default');
+        defaultButton.addEventListener('click', () => {
+          toast.addToast({
+            title: 'Title',
+            text: 'Toast text content.',
+          });
+        });
+
+        const errorButton = document.querySelector('.js-toast-error');
+        errorButton.addEventListener('click', () => {
+          toast.addToast({
+            type: 'error',
+            title: 'Title',
+            text: 'Toast text content.',
+          });
+        });
+
+        const warningButton = document.querySelector('.js-toast-warning');
+        warningButton.addEventListener('click', () => {
+          toast.addToast({
+            type: 'warning',
+            title: 'Title',
+            text: 'Toast text content.',
+          });
+        });
+
+        const successButton = document.querySelector('.js-toast-success');
+        successButton.addEventListener('click', () => {
+          toast.addToast({
+            type: 'success',
+            title: 'Title',
+            text: 'Toast text content.',
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
